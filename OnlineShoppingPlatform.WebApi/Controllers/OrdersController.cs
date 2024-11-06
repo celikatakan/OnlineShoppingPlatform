@@ -17,12 +17,12 @@ namespace OnlineShoppingPlatform.WebApi.Controllers
     {
         // Dependency injection for order and product services
         private readonly IOrderService _orderService;
-        private readonly IProductService _productService;
+        
         // Constructor to initialize OrdersController with order and product services
-        public OrdersController(IOrderService orderService, IProductService productService)
+        public OrdersController(IOrderService orderService)
         {
             _orderService = orderService;
-            _productService = productService;
+           
         }
         // Endpoint to retrieve an order by its ID
         [HttpGet("{id}")]

@@ -60,6 +60,14 @@ namespace OnlineShoppingPlatform.Business.Operations.Order
                         Message = "Product not found."
                     };
                 }
+                if(product.StockQuantity < item.Quantity)
+                {
+                    return new ServiceMessage<AddOrderDto>
+                    {
+                        IsSucceed = false,
+                        Message = $"Product stock not enough. Product Name : {product.ProductName} "
+                    };
+                }
                 totalAmount += product.Price * item.Quantity;
             }
             // Create a list of OrderProductDto for the order
@@ -106,6 +114,24 @@ namespace OnlineShoppingPlatform.Business.Operations.Order
                 };
 
                 _orderProductRepository.Add(orderProduct);
+
+                //update product stock block area 
+                foreach (var item in order.Products)
+                {
+                    var product = await _productService.GetProduct(item.ProductId);
+                    UpdateProductDto updateProductDto = new UpdateProductDto()
+                    {
+                        Id = product.Id,
+                        Price = product.Price,
+                        ProductName = product.ProductName,
+                        StockQuantity = product.StockQuantity,
+                    };
+                    updateProductDto.StockQuantity -= item.Quantity;
+                    await _productService.UpdateProduct(updateProductDto);
+
+                }
+
+
             }
             try
             {
