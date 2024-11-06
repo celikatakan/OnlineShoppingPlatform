@@ -13,12 +13,12 @@ namespace OnlineShoppingPlatform.WebApi.Filters
         // Override method to execute logic before the action executes
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var now = DateTime.Now.TimeOfDay; // Get the current time of day
+            var now = $"{DateTime.Now.Hour}:{DateTime.Now.Minute}"; // Get the current time of day
 
-            StartTime = "00:00";
-            EndTime = "04.59";
+            StartTime = "23:30";
+            EndTime = "23:59";
 
-            if (now >= TimeSpan.Parse(StartTime) && now <= TimeSpan.Parse(EndTime)) 
+            if (!(TimeSpan.Parse(now) >= TimeSpan.Parse(StartTime) && TimeSpan.Parse(now) <= TimeSpan.Parse(EndTime))) 
             {
                 base.OnActionExecuting(context);
             }
