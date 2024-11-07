@@ -2,6 +2,9 @@
 
 ## Project Description
 This project is a multi-layered online shopping platform developed using ASP.NET Core Web API. It uses Entity Framework Core with a Code First approach to interact with the database.
+![Swagger](https://github.com/user-attachments/assets/096f31b6-ee95-453c-95e1-e1438bfd0bf2)
+
+![dB](https://github.com/user-attachments/assets/92178a35-c6d9-4a29-bc29-a364e225294b)
 
 ## Project Requirements
 
