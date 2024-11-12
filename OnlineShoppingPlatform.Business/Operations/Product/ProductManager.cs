@@ -81,9 +81,9 @@ namespace OnlineShoppingPlatform.Business.Operations.Product
             {
                 await _unitOfWork.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("An unexpected error occurred.");
+                throw new Exception("An unexpected error occurred." + ex);
             }
             return new ServiceMessage
             {
@@ -111,10 +111,10 @@ namespace OnlineShoppingPlatform.Business.Operations.Product
             {
                 await _unitOfWork.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (Exception ex )
             {
 
-                throw new Exception("An error was encountered while deleting the product.");
+                throw new Exception("An error was encountered while deleting the product." + ex);
             }
 
             return new ServiceMessage
@@ -172,9 +172,9 @@ namespace OnlineShoppingPlatform.Business.Operations.Product
             {
                 await _unitOfWork.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (Exception ex )
             {
-                throw new Exception("An error was encountered while updating product information.");
+                throw new Exception("An error was encountered while updating product information." + ex);
             }
             return new ServiceMessage
             {

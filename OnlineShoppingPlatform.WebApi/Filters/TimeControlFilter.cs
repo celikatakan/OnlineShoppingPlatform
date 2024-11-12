@@ -15,8 +15,8 @@ namespace OnlineShoppingPlatform.WebApi.Filters
         {
             var now = $"{DateTime.Now.Hour}:{DateTime.Now.Minute}"; // Get the current time of day
 
-            StartTime = "23:30";
-            EndTime = "23:59";
+            StartTime = "22:30";
+            EndTime = "22:59";
 
             if (!(TimeSpan.Parse(now) >= TimeSpan.Parse(StartTime) && TimeSpan.Parse(now) <= TimeSpan.Parse(EndTime))) 
             {

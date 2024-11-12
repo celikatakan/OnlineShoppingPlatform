@@ -97,10 +97,10 @@ namespace OnlineShoppingPlatform.Business.Operations.Order
             {
                 await _unitOfWork.SaveChangesAsync();   // Save changes to the database
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
 
-                throw new Exception("An unexpected error occurred." + e.Message);
+                throw new Exception("An unexpected error occurred." + ex);
             }
             // Add associated products to the order
             foreach (var productIds in order.Products)
@@ -139,10 +139,10 @@ namespace OnlineShoppingPlatform.Business.Operations.Order
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransaction();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await _unitOfWork.RollBackTransaction();
-                throw new Exception("An unexpected error occurred.");
+                throw new Exception("An unexpected error occurred." + ex);
             }
             return new ServiceMessage<AddOrderDto>
             {
@@ -175,10 +175,10 @@ namespace OnlineShoppingPlatform.Business.Operations.Order
             {
                 await _unitOfWork.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw new Exception("An error was encountered while deleting the order.");
+                throw new Exception("An error was encountered while deleting the order." + ex);
             }
 
             return new ServiceMessage
@@ -300,10 +300,10 @@ namespace OnlineShoppingPlatform.Business.Operations.Order
                 await _unitOfWork.CommitTransaction();
 
             }
-            catch (Exception)
+            catch (Exception ex )
             {
                 await _unitOfWork.RollBackTransaction();
-                throw new Exception("An error was encountered while updating order information.");
+                throw new Exception("An error was encountered while updating order information." + ex);
             }
             return new ServiceMessage
             {

@@ -99,9 +99,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMaintenanceMode(); // Use maintenance mode middleware to control API availability during maintenance
+app.UseExceptionHandling();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllers();
 
