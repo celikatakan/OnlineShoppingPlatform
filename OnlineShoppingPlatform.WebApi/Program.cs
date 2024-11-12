@@ -99,7 +99,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMaintenanceMode(); // Use maintenance mode middleware to control API availability during maintenance
-app.UseExceptionHandling();
+app.UseExceptionHandling(); // Sets up global exception handling to catch and manage application errors.
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
